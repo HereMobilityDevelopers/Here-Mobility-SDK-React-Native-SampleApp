@@ -1,0 +1,9 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/HereMobilityDevelopers/Here-Mobility-SDK-iOS.git'
+
+platform :ios, '9.0'
+
+target 'sampleappreactnative' do
+    use_frameworks!
+    pod 'HereSDKDemandKit', '~> 1.0.6'
+end

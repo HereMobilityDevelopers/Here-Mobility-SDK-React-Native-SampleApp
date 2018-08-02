@@ -1,0 +1,62 @@
+
+# OSX
+#
+.DS_Store
+.vscode
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn.lock
+package-lock.json  
+
+# Xcode
+#
+build/
+Pods/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+!.xcuserdata/
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
+Podfile.lock
+
+
+
+      
+
+# Android/IntelliJ
+#
+build/
+.idea
+.gradle
+gradle/
+gradlew
+gradlew.bat
+keystores/
+.settings/
+.classpath
+
+.project
+local.properties
+*.iml
+
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
+      
+*.
