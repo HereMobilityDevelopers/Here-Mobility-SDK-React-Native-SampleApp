@@ -6,7 +6,7 @@ import React, { Component } from "react";
 import { Text, View, ListView } from "react-native";
 
 /**
- * Present Ride Log status.
+ * Present Ride status log
  */
 export class RideStatusLog extends Component {
   constructor(props) {

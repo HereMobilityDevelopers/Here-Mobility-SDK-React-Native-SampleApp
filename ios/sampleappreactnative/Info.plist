@@ -24,8 +24,6 @@
 	<string>1</string>
 	<key>HereMobilitySDKAppId</key>
 	<string>{YOUR_SDK_APP_ID}</string>
-	<key>HereMobilitySDKAppSecret</key>
-	<string>{YOUR_SDK_APP_SECRET}</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

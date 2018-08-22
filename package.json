@@ -19,7 +19,7 @@
     "preset": "react-native"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0-beta.47",
+    "@babel/core": "^7.0.0-rc.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react-native": "2.1.0",
     "crypto-js": "^3.1.9-1",
@@ -28,7 +28,7 @@
     "prop-types": "^15.0.0",
     "react": "^16.4.1",
     "react-native": "~0.55.0",
-    "react-native-here-mobility-sdk": "^1.0.6",
+    "react-native-here-mobility-sdk": "^1.0.7",
     "react-native-modal-datetime-picker": "^5.1.0",
     "react-native-ui-kitten": "^3.0.1",
     "react-native-ui-stepper": "^1.2.4",

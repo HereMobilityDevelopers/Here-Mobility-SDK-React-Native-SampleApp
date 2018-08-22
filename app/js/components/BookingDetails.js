@@ -16,12 +16,13 @@ type Props = {
       passengerCount: number,
       passengerSuitcase: number
     },
-    //leave time, null if leave now.
+    subscribeToMessages: boolean,
+    // time for the ride to leave; null if the ride should leave now.
     leaveTime: Date,
     isTimePickerVisible: boolean,
     bookingNowSwitcher: boolean
   },
-  bookingDetailsChanged: (bookingDetails) => void
+  bookingDetailsChanged: bookingDetails => void
 };
 
 const BookingConstraints = props => {
@@ -77,6 +78,28 @@ const BookingConstraints = props => {
           }}
         />
       </View>
+      <SwitcherCell
+        title="Subscribe to messages"
+        switcherValueChange={value => {
+          props.bookingDetailsChanged({
+            ...props.bookingDetails,
+            subscribeToMessages: value
+          });
+        }}
+        switcherValue={props.bookingDetails.subscribeToMessages}
+      />
+    </View>
+  );
+};
+
+const SwitcherCell = props => {
+  return (
+    <View style={SharedStyles.centerRowContainer}>
+      <Text style={SharedStyles.fillRow}>{props.title}</Text>
+      <Switch
+        onValueChange={props.switcherValueChange}
+        value={props.switcherValue}
+      />
     </View>
   );
 };
@@ -90,9 +113,9 @@ const BookingTime = props => {
       style={SharedStyles.borderView}
     >
       <View style={SharedStyles.centerRowContainer}>
-        <Text style={SharedStyles.fillRow}>Booking now?</Text>
-        <Switch
-          onValueChange={value => {
+        <SwitcherCell
+          title="Booking now?"
+          switcherValueChange={value => {
             props.bookingDetailsChanged({
               ...props.bookingDetails,
               bookingNowSwitcher: value,
@@ -100,10 +123,10 @@ const BookingTime = props => {
               leaveTime: value ? null : props.bookingDetails.leaveTime
             });
           }}
-          value={props.bookingDetails.bookingNowSwitcher}
+          switcherValue={props.bookingDetails.bookingNowSwitcher}
         />
       </View>
-      {// Check if time to leave should be render.
+      {// Check if time to leave should be rendered.
       !props.bookingDetails.leaveTime ? null : (
         <Text style={{ margin: 10 }}>
           Leave at: {props.bookingDetails.leaveTime.toString()}
@@ -114,7 +137,7 @@ const BookingTime = props => {
 };
 
 /**
- * Present editable way point.
+ * Present booking details.
  */
 export class BookingDetails extends Component<Props> {
   constructor(props) {

@@ -11,10 +11,13 @@ import SharedStyles from "../styles/shared";
 import { NavigationActions, StackActions } from "react-navigation";
 
 /**
- * Here mobility SDK demand wrapper.
+ * Here Mobility Demand SDK wrapper.
  */
 const { HereMobilitySDKDemand } = require("react-native-here-mobility-sdk");
 
+/**
+ * Display list of ride offers for the user to choose from.
+ */
 export default class OffersListView extends Component {
   /**
    * Screen navigation title.
@@ -32,8 +35,7 @@ export default class OffersListView extends Component {
     const { offers } = this.props.navigation.state.params;
 
     this.state = {
-      dataSource: ds.cloneWithRows(offers.all()),
-      passengerDetails: this.props.navigation.state.params.passengerDetails
+      dataSource: ds.cloneWithRows(offers.all())
     };
   }
 
@@ -53,20 +55,29 @@ export default class OffersListView extends Component {
     return (
       <OfferCell
         offer={offer}
-        onPress={(offer) => {
-          this.onCellPressed(offer)  
+        onPress={offer => {
+          this.onCellPressed(offer);
         }}
       />
     );
   }
 
   /**
-   * Called when offer cell pressed.
+   * Called when an offer cell is pressed.
    */
-  onCellPressed = function(offer){
+  onCellPressed = function(offer) {
     switch (offer.type) {
       case "TAXI":
-        createRide(offer, this.state.passengerDetails, this.props.navigation);
+        const {
+          passengerDetails,
+          subscribeToMessages
+        } = this.props.navigation.state.params;
+        createRide(
+          offer,
+          passengerDetails,
+          subscribeToMessages,
+          this.props.navigation
+        );
         break;
       case "PUBLIC_TRANSPORT":
         this.props.navigation.navigate("PublicTransportDetails", {
@@ -78,24 +89,30 @@ export default class OffersListView extends Component {
 }
 
 /**
- * Request to book Ride Offer.A taxi offer for ride. should be received from HereSDKDemand.getRides requet.
+ * Request to book a Ride Offer received from a HereSDKDemand.getRides() request.
  */
-const createRide = (offer, passengerDetails, navigation) => {
+const createRide = (
+  offer,
+  passengerDetails,
+  subscribeToMessages,
+  navigation
+) => {
   HereMobilitySDKDemand.createRide(
     offer.offerId,
     passengerDetails,
+    subscribeToMessages,
     (ride, error) => {
       if (error) {
         alert(error);
       } else {
-        navigateToRideDetails(ride,navigation);
+        navigateToRideDetails(ride, navigation);
       }
     }
   );
 };
 
 /**
- * Navigate to ride details. remove OffersListView from navigation stack view because this view is irrelevant.
+ * Navigate to ride details. Remove OffersListView from navigation stack view because this view is irrelevant.
  */
 const navigateToRideDetails = (ride, navigation) => {
   const resetAction = StackActions.reset({
@@ -148,13 +165,12 @@ const PublicTransportCell = props => {
 };
 
 /**
- * A component to present offer cell.
+ * A component to present an offer cell.
  * Can be a Taxi offer or a Public transport offer.
  */
 class OfferCell extends Component {
   render() {
     const { offer } = this.props;
-    console.log(offer);
     return (
       <TouchableOpacity onPress={() => this.props.onPress(offer)}>
         <RkCard rkType="shadowed" style={{ flex: 1, margin: 10, padding: 10 }}>

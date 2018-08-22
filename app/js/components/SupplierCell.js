@@ -29,7 +29,7 @@ const BookNowButton = () => {
 };
 
 /**
- * Get supplier Icon.
+ * Get supplier logo icon.
  */
 const SupplierIcon = props => {
   if (props.supplier.logoUrl) {

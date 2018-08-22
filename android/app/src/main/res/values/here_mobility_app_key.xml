@@ -11,6 +11,6 @@
     Once you have your key replace string value in this file.
     -->
 
-<string name="here_sdk_app_id">YOUR_SDK_APP_ID</string>
+    <string name="here_sdk_app_id">{YOUR_SDK_APP_ID}</string>
 
 </resources>

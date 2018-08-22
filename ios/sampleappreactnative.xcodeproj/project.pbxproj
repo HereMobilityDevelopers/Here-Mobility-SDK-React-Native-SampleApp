@@ -1179,8 +1179,8 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-sampleappreactnative/Pods-sampleappreactnative-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
-				"${PODS_ROOT}/HereSDKCoreKit/HereSDKCoreKit.framework",
-				"${PODS_ROOT}/HereSDKDemandKit/HereSDKDemandKit.framework",
+				"${PODS_ROOT}/HereSDKCoreKit/Frameworks/HereSDKCoreKit.framework",
+				"${PODS_ROOT}/HereSDKDemandKit/Frameworks/HereSDKDemandKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",

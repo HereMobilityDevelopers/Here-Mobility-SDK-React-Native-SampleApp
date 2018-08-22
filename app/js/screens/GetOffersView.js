@@ -12,7 +12,7 @@ import { PassengerDetails } from "../components/PassengerDetails";
 import { BookingDetails } from "../components/BookingDetails";
 
 /**
- * Here mobility SDK demand wrapper.
+ * Here Mobility Demand SDK wrapper.
  */
 const { HereMobilitySDKDemand } = require("react-native-here-mobility-sdk");
 
@@ -42,12 +42,12 @@ export default class GetOffersView extends Component {
     this.state = {
       //Center of london
       pickupPoint: {
-        lat: "51.5",
-        lon: "-0.115057"
+        lat: "31.256705",
+        lon: "34.785740"
       },
       destinationPoint: {
-        lat: "51.6",
-        lon: "-0.115057"
+        lat: "31.256705",
+        lon: "34.785740"
       },
       passengerDetails: {
         name: "Driver",
@@ -59,6 +59,7 @@ export default class GetOffersView extends Component {
           passengerCount: 1,
           passengerSuitcase: 0
         },
+        subscribeToMessages: false,
         //leave time, null if leave now.
         leaveTime: null,
         isTimePickerVisible: false,
@@ -113,8 +114,8 @@ export default class GetOffersView extends Component {
   }
 
   /**
-   * Called when get rides button pressed.
-   * Send request to get rides offers.
+   * Called when "Get Rides" button is pressed.
+   * Sends a request to get ride offers.
    */
   onGetRidePressed = () => {
     //Name and phone number are mandatory to create ride.
@@ -158,7 +159,10 @@ export default class GetOffersView extends Component {
         } else {
           this.props.navigation.navigate("OffersList", {
             offers: offers,
-            passengerDetails: this.state.passengerDetails
+            passengerDetails: this.state.passengerDetails,
+            subscribeToMessages: {
+              subscribeToMessages: this.state.bookingDetails.subscribeToMessages
+            }
           });
         }
       }
@@ -166,7 +170,7 @@ export default class GetOffersView extends Component {
   };
 
   /**
-   * Called when date time picker view cancel buttn pressed.
+   * Called when the date-time picker view cancel button is pressed.
    */
   dateTimePickerCancelPressed = () => {
     this.setState({
@@ -180,8 +184,8 @@ export default class GetOffersView extends Component {
   };
 
   /**
-   * Handle date picker time selected.
-   * The minimum time for pre-book offers is NOW() + 30 minutes.
+   * Called when a date picker time is selected.
+   * The minimum time for pre-booked offers is NOW() + 30 minutes.
    */
   handleDatePicked = leavingTime => {
     const minimumTimeForBooking = new Date(new Date().getTime() + 30 * 60);

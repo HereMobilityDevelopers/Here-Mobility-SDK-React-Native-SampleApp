@@ -8,14 +8,13 @@ The HERE Mobility Marketplace is a "broker" between transportation suppliers and
 
 The Here Mobility sample app (described below) presents a simple workflow for adding a variety of mobility services to your app.
 
-
 ## Getting Started
 
 ### Getting Access Credentials
 
 To use the HERE Mobility SDK, you'll need App ID key and App secret key values. To request these credentials, contact us at [mobility_developers@here.com]().
 
-Please make sure to email us both bundle id/package name for your IOS and Android apps
+>**Note:** Please make sure to email us both a bundle ID and a package name, for your iOS and Android apps respectively.
 
 ### Cloning the Sample App Git Repository
 
@@ -23,17 +22,21 @@ In a Bash command window, clone the React Sample App Git repository as follows:
 
 ```bash
 # Clone this repository
-$ // TO UPDATE
+$ git clone https://github.com/HereMobilityDevelopers/Here-Mobility-SDK-React-Native-SampleApp.git 
 ```
 
-### Running React sample app
+### Running the React Sample App
 
-#### Build React dependencies
+#### Building React Dependencies
+
+To build the React dependencies, first run the following command, and then run the appropriate commands for your OS (see below).
+
 ```bash
 $ npm install
 ```
 
 #### iOS
+
 ```bash
 # Build iOS dependencies
 $ yarn build:ios
@@ -43,6 +46,7 @@ $ yarn run ios
 ```
 
 #### Android 
+
 ```bash
 # run android
 $ yarn run android
@@ -53,21 +57,18 @@ $ yarn run android
 Here is an overview of the workflow for booking a ride and monitoring its progress, using the HERE Mobility SDK.
 Click on a step name to go to its corresponding code example.
 
- |Step | Description
- |:----|:------------
- |[Get ride offers based on a ride request data](#get-ride-offers-based-on-a-ride-request-data) | Get ride offers from public or private ride suppliers
- |[Present ride offers according to type](#present-ride-offers-according-to-type)| Display public transport and/or ride suppliers
- |[Book a ride](#book-a-ride)| Book one of the ride offers received
- |[Register for ride updates](#register-for-ride-updates) | Register for updates about the ride's progress
- |[Receive ride updates](#receive-ride-updates) | receive updates for ride progress
- |[Present public transport details](#present-public-transport-details) | receive updates for ride progress
-
+ |Step 
+ |:----
+ |[Get ride offers](#get-ride-offers) 
+ |[Present ride offers according to type](#present-ride-offers-by-type)
+ |[Book a ride](#book-a-ride)
+ |[Register for ride updates](#register-for-ride-updates)
+ |[Receive ride updates](#receive-ride-updates)
+ |[Present public transport leg details](#present-public-transport-leg-details)
 
 ### Get Ride Offers
 
-The HERE SDK Demand Kit allows you to request ride offers based on various parameters.
-
-####Get ride offers based on a ride request data
+You can request ride offers based on parameters such as pickup time and location, number of passengers, etc. See the [RideOffersRequest documentation](https://heremobilitydevelopers.github.io/Here-Mobility-Sdk-React-Native/#rideoffersrequest) to learn more.
 
 ```js
 HereMobilitySDKDemand.getRideOffers(
@@ -104,8 +105,14 @@ HereMobilitySDKDemand.getRideOffers(
     );
 ```
 
+### Present Ride Offers by Type
 
-#### Present ride offers according to type
+Ride offers can have 1 of 2 types: Taxi and Public Transportation.
+See the following documentation to learn more:
+
+* [Taxi ride offers documentation](https://heremobilitydevelopers.github.io/Here-Mobility-Sdk-React-Native/#taxirideoffer)
+* [Public transportation ride offers documentation](https://heremobilitydevelopers.github.io/Here-Mobility-Sdk-React-Native/#publictransportrideoffer)
+
 ```js
 class OfferCell extends Component {
   render() {
@@ -123,7 +130,7 @@ class OfferCell extends Component {
 
 ### Book a Ride
 
-Get passenger details
+You can book one of the ride offers that you received in response to *getRideOffers*. To do this, call *createRide* while passing the passenger's details (see [PassengerDetails documentation](https://heremobilitydevelopers.github.io/Here-Mobility-Sdk-React-Native/#passengerdetails) to learn more).
 
 ```js
 type Props = {
@@ -135,8 +142,6 @@ type Props = {
   passengerDetailsChanged: passengerDetails => void
 };
 ```
-
-#### Book a ride based on a ride offer and passenger details
 
 ```js
 const createRide = (offer, passengerDetails) => {
@@ -153,7 +158,9 @@ const createRide = (offer, passengerDetails) => {
 };
 ```
 
-#### register and receive ride updates according to your ride
+### Register for Ride Updates
+
+You can register for updates about a ride's status and location. See  [registerForRidesUpdates Documentation](https://heremobilitydevelopers.github.io/Here-Mobility-Sdk-React-Native/#heremobilitysdkdemandregisterforridesupdates) to learn more.
 
 ```js
 HereMobilitySDKDemand.registerForRidesUpdates(
@@ -163,7 +170,9 @@ HereMobilitySDKDemand.registerForRidesUpdates(
 );
 ```
 
-### Present public transport details
+### Present Public Transport Leg Details
+
+A public transport ride is composed of one or more sections or "legs". Each leg may be provided by a different type of public transport. You can retrieve and display all the ride's legs. See [PublicTransportRouteLeg documentation](https://heremobilitydevelopers.github.io/Here-Mobility-Sdk-React-Native/#publictransportrouteleg) to learn more.
 
 ```js
 getRow(leg) {

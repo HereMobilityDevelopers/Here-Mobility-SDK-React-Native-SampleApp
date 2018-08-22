@@ -9,7 +9,7 @@ import SharedStyles from "../styles/shared";
 const IconPlaceholder = require("../../img/ic_driver_placeholder.png");
 /**
  * Present driver details.
- * Driver can be null for cases that the ride wait for driver assignment.
+ * The driver can be null if the ride is still waiting for driver assignment.
  */
 export class DriverCell extends Component {
   constructor(props) {

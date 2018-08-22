@@ -10,7 +10,7 @@ import { RideStatusLog } from "../components/RideStatusLog";
 import { RideDetails } from "../components/RideDetails";
 
 /**
- * Here mobility SDK demand wrapper.
+ * Here Mobility Demand SDK wrapper.
  */
 const { HereMobilitySDKDemand } = require("react-native-here-mobility-sdk");
 
@@ -26,7 +26,7 @@ const CancelRideButton = props => {
 };
 
 /**
- * Present the ride status, supplier info, driver info, and real time ride detail and status updates.
+ * Present the ride status, supplier info, driver info, and real time ride details and status updates.
  */
 const RideStatus = props => {
   return (
@@ -99,7 +99,6 @@ export default class RideDetailsView extends Component {
         if (err) {
           alert(err);
         } else {
-          console.log(response);
           navigation.goBack();
         }
       }

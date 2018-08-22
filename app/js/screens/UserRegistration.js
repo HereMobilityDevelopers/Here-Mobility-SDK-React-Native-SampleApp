@@ -7,12 +7,12 @@ import { View, TextInput, TouchableHighlight, Text } from "react-native";
 import SharedStyles from "../styles/shared";
 
 /**
- * Here mobility SDK wrapper.
+ * Here Mobility SDK wrapper.
  */
 const { HereMobilitySDK } = require("react-native-here-mobility-sdk");
 
 /**
- * The apps key and expiration.
+ * The app's key, secret value and expiration date/time for the access token.
  */
 const APP_KEYS = {
   appKey: "YOUR_SDK_APP_ID",

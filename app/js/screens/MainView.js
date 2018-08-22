@@ -8,7 +8,10 @@ import { View, Button, TouchableHighlight } from "react-native";
 import SharedStyles from "../styles/shared";
 
 const USER_AUTH_ERROR = {
-  reasons: ["User Authentication info wasn't supplied"],
+  reasons: [
+    "User Authentication info wasn't supplied",
+    "failed authenticating the user"
+  ],
   showRegistrationScreen: reason => {
     return USER_AUTH_ERROR.reasons.find(function(element) {
       return element === reason;
@@ -17,7 +20,7 @@ const USER_AUTH_ERROR = {
 };
 
 /**
- * Here mobility SDK demand wrapper.
+ * Here Mobility Demand SDK wrapper.
  */
 const { HereMobilitySDKDemand } = require("react-native-here-mobility-sdk");
 
@@ -59,9 +62,10 @@ export default class MainView extends Component {
    * Get rides request when the component did mount.
    */
   componentDidMount() {
-    HereMobilitySDKDemand.getRides({
-      limit: 22,
-      sortBy: 'UPDATE_TIME_ASC'
+    HereMobilitySDKDemand.getRides(
+      {
+        limit: 22,
+        sortBy: "UPDATE_TIME_ASC"
       },
       (ridesQueryResult, err) => {
         if (err) {
@@ -73,11 +77,14 @@ export default class MainView extends Component {
           if (USER_AUTH_ERROR.showRegistrationScreen(err.reason)) {
             this.props.navigation.navigate("UserRegistration");
           } else {
-            alert(JSON.stringify(error));
+            alert(JSON.stringify(err));
           }
         } else {
-          if(ridesQueryResult.rides.length > 0){
-            this.setState({ hasRides: true, ridesQueryResult: ridesQueryResult });
+          if (ridesQueryResult.rides.length > 0) {
+            this.setState({
+              hasRides: true,
+              ridesQueryResult: ridesQueryResult
+            });
           }
         }
       }

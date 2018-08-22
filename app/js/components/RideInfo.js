@@ -33,7 +33,7 @@ const Price = props => {
 };
 
 /**
- * Present ride eta
+ * Present ride ETA (Estimated Time of Arrival)
  */
 const ETA = props => {
   const { estimatedTime } = props;

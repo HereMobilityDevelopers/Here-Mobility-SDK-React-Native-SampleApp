@@ -5,5 +5,5 @@ platform :ios, '9.0'
 
 target 'sampleappreactnative' do
     use_frameworks!
-    pod 'HereSDKDemandKit', '~> 1.0.6'
+    pod 'HereSDKDemandKit', '~> 1.0.8'
 end

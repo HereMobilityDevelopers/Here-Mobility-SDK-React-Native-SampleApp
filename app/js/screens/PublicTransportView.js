@@ -21,15 +21,15 @@ const Duration = props => {
 };
 
 /**
- * The name of the line. null if leg.transportMode is TransportMode.WALK,
- * otherwise always exist.
+ * The name of the public transport line. 
+ * Null if leg.transportMode is TransportMode.WALK, otherwise always exists.
  */
 const LineName = props => {
   return <Text>Line name: {props.lineName}</Text>;
 };
 
 /**
- * The operator of the line.
+ * The operator of the public transport line.
  */
 const OperatorName = props => {
   return <Text>OperatorName: {props.operatorName}</Text>;
@@ -37,7 +37,7 @@ const OperatorName = props => {
 
 /**
  * Public transport view shows the public transport legs.
- * Leg is a list of transportation sections for the route.
+ * Each leg is a list of transportation sections for the route.
  */
 export default class PublicTransportView extends Component {
   static navigationOptions = {
@@ -89,7 +89,7 @@ export default class PublicTransportView extends Component {
     );
   }
 
-  // Convert ms to time format.
+  // Convert milliseconds to time format.
   static convertMS(milliseconds) {
     var day, hour, minute, seconds;
     seconds = Math.floor(milliseconds / 1000);
