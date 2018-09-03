@@ -27,6 +27,11 @@ $ git clone https://github.com/HereMobilityDevelopers/Here-Mobility-SDK-React-Na
 
 ### Running the React Sample App
 
+#### Set your App ID key and App secret key for React native app
+```bash
+# set the keys at /Here-Mobility-SDK-React-Native-SampleApp/app/js/screens/UserRegistration.js 
+```
+
 #### Building React Dependencies
 
 To build the React dependencies, first run the following command, and then run the appropriate commands for your OS (see below).
@@ -40,6 +45,7 @@ $ npm install
 ```bash
 # Build iOS dependencies
 $ yarn build:ios
+# set your App ID key at /Here-Mobility-SDK-React-Native-SampleApp/ios/sampleappreactnative/Info.plist  
 # run iOS
 $ yarn run ios
 
@@ -48,6 +54,7 @@ $ yarn run ios
 #### Android 
 
 ```bash
+# set your App ID key at Here-Mobility-SDK-React-Native-SampleApp/android/app/src/main/AndroidManifest.xml
 # run android
 $ yarn run android
 ```

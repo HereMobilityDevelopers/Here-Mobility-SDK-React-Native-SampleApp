@@ -3,7 +3,7 @@
  **********************************************************/
 
 import React, { Component } from "react";
-import { Text, TouchableHighlight, View, ListView } from "react-native";
+import { Text, TouchableHighlight, View, ListView, Alert } from "react-native";
 
 import SharedStyles from "../styles/shared";
 import { RideStatusLog } from "../components/RideStatusLog";
@@ -97,9 +97,14 @@ export default class RideDetailsView extends Component {
       "User canceled the ride.",
       function(response, err) {
         if (err) {
-          alert(err);
+          alert(JSON.stringify(err));
         } else {
-          navigation.goBack();
+          Alert.alert(
+            "Cancel ride status:",
+            response.status,
+            [{ text: "OK", onPress: () => navigation.goBack() }],
+            { cancelable: false }
+          );
         }
       }
     );

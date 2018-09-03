@@ -21,10 +21,7 @@
         </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-
-        <!--Follow the instruction in the Readme of the SDK in order to get App Key.-->
-        <!--(https://github.com/HereMobilityDevelopers/HERE-Mobility-SDK-Android#obtaining-here-credentials-for-your-app-)-->
-        <meta-data
+      <meta-data
             android:name="com.here.mobility.sdk.API_KEY"
             android:value="@string/here_sdk_app_id" />
     </application>

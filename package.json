@@ -28,10 +28,10 @@
     "prop-types": "^15.0.0",
     "react": "^16.4.1",
     "react-native": "~0.55.0",
-    "react-native-here-mobility-sdk": "^1.0.7",
+    "react-native-here-mobility-sdk": "^1.1.0",
     "react-native-modal-datetime-picker": "^5.1.0",
     "react-native-ui-kitten": "^3.0.1",
     "react-native-ui-stepper": "^1.2.4",
-    "react-navigation": "^2.5.5"
+    "react-navigation": "2.12.1"
   }
 }

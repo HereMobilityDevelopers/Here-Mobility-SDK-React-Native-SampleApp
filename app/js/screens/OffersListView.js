@@ -103,7 +103,7 @@ const createRide = (
     subscribeToMessages,
     (ride, error) => {
       if (error) {
-        alert(error);
+        alert(JSON.stringify(error));
       } else {
         navigateToRideDetails(ride, navigation);
       }

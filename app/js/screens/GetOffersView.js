@@ -155,7 +155,7 @@ export default class GetOffersView extends Component {
       },
       (offers, err) => {
         if (err) {
-          alert(err);
+          alert(JSON.stringify(err));
         } else {
           this.props.navigation.navigate("OffersList", {
             offers: offers,
